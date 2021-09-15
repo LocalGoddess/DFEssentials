@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "dfe",
+  "version": "${version}",
+  "name": "DF Essentials",
+  "description": "A Quality of Life client-side Minecraft modification to be used on the DiamondFire server",
+  "authors": [
+    "Chloe (Hammer86gn)",
+    "8Blits"
+  ],
+  "contact": {},
+  "license": "LGPL-3.0",
+  "icon": "assets/dfe/ico.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "me.hammer86gn.dfessentials.DFE"
+    ]
+  },
+  "mixins": [
+    "dfessentials.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.6",
+    "fabric": "*",
+    "minecraft": "1.17.1"
+  }
+}
