@@ -4,6 +4,7 @@
   "package": "me.hammer86gn.dfessentials.fabric.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "menus.TitleScreenMixin"
   ],
   "client": [
   ],
