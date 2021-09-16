@@ -69,14 +69,14 @@ public class TitleScreenMixin extends Screen {
         drawStringWithShadow(this.matrices, this.textRenderer, this.versionText,
                 2, this.height - 19, 16777215 | textColorModifier);
 
-        DFE.getInstance().getModLogger().info(
-                "[DFE] [TitleScreen] Drawing Text:\n" +
-                    "Matrices: " + matrices.peek().getModel().toString() + "\n" +
-                    "Empty: " + matrices.isEmpty() + "\n" +
-                    "PosX: " + this.posX + "\n" +
-                    "PosY: " + this.posY + "\n" +
-                    "Text: " + this.versionText + "\n" +
-                    "Font Height: " + this.textRenderer.fontHeight
-        );
+//        DFE.getInstance().getModLogger().info(
+//                "[DFE] [TitleScreen] Drawing Text:\n" +
+//                    "Matrices: " + matrices.peek().getModel().toString() + "\n" +
+//                    "Empty: " + matrices.isEmpty() + "\n" +
+//                    "PosX: " + this.posX + "\n" +
+//                    "PosY: " + this.posY + "\n" +
+//                    "Text: " + this.versionText + "\n" +
+//                    "Font Height: " + this.textRenderer.fontHeight
+//        );
     }
 }
