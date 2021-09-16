@@ -31,19 +31,32 @@ public class TitleScreenMixin extends Screen {
 
     private MatrixStack matrices = new MatrixStack();
 
+    private boolean inited = false;
+
     protected TitleScreenMixin() {
         super(new TranslatableText(""));
 
-        textWidth = this.textRenderer.getWidth(versionText);
-        posX = this.width - textWidth - 2;
-        posY = this.height;
-
-        matrices.push();
-        matrices.push();
+//        textWidth = this.textRenderer.getWidth(versionText);
+//        posX = this.width - textWidth - 2;
+//        posY = this.height;
+//
+//        matrices.push();
+//        matrices.push();
     }
 
     @Inject(method = "render", at = @At("TAIL"), cancellable = false)
     public void render(CallbackInfo ci) {
+        if (!inited) {
+
+            textWidth = this.textRenderer.getWidth(versionText);
+            posX = this.width - textWidth - 2;
+            posY = this.height - 220;
+
+            matrices.push();
+            matrices.push();
+
+            inited = true;
+        }
 
         float fadeClamp = this.doBackgroundFade ? (float)(Util.getMeasuringTimeMs() - this.backgroundFadeStart) / 1000.0F : 1.0F;
         float backgroundFadeAmount = this.doBackgroundFade ? MathHelper.clamp(fadeClamp - 1.0F, 0.0F, 1.0F) : 1.0F;
@@ -54,16 +67,16 @@ public class TitleScreenMixin extends Screen {
         }
 
         drawStringWithShadow(this.matrices, this.textRenderer, this.versionText,
-                this.posX, this.posY, 16777215 | textColorModifier);
+                2, this.height - 19, 16777215 | textColorModifier);
 
-//        DFE.getInstance().getModLogger().info(
-//                "[DFE] [TitleScreen] Drawing Text:\n" +
-//                    "Matrices: " + matrices.peek().getModel().toString() + "\n" +
-//                    "Empty: " + matrices.isEmpty() + "\n" +
-//                    "PosX: " + this.posX + "\n" +
-//                    "PosY: " + this.posY + "\n" +
-//                    "Text: " + this.versionText + "\n" +
-//                    "Font Height: " + this.textRenderer.fontHeight
-//        );
+        DFE.getInstance().getModLogger().info(
+                "[DFE] [TitleScreen] Drawing Text:\n" +
+                    "Matrices: " + matrices.peek().getModel().toString() + "\n" +
+                    "Empty: " + matrices.isEmpty() + "\n" +
+                    "PosX: " + this.posX + "\n" +
+                    "PosY: " + this.posY + "\n" +
+                    "Text: " + this.versionText + "\n" +
+                    "Font Height: " + this.textRenderer.fontHeight
+        );
     }
 }
