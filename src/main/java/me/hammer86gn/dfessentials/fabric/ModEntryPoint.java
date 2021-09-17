@@ -4,7 +4,6 @@ import me.hammer86gn.dfessentials.utils.Version;
 import net.fabricmc.api.ModInitializer;
 
 public abstract class ModEntryPoint implements ModInitializer {
-
     private final Version version;
 
     public ModEntryPoint(Version version) {
@@ -14,5 +13,6 @@ public abstract class ModEntryPoint implements ModInitializer {
     public Version getModVersion() {
         return version;
     }
+
 
 }

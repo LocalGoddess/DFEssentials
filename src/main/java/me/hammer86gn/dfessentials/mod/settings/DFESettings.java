@@ -1,22 +1,31 @@
 package me.hammer86gn.dfessentials.mod.settings;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import me.hammer86gn.dfessentials.DFE;
 import me.hammer86gn.dfessentials.utils.Version;
 
 import java.io.*;
 
+/**
+ * Class used to interface with the settings file
+ *
+ * @since 0.1.0
+ * @author Chloe
+ */
 public class DFESettings {
     private static DFESettings instance;
 
     private File settingsFile = new File(DFE.getInstance().getModDir().getName() + "/settings.json");
     private JsonObject defaultSettings = new JsonObject();
 
+    private JsonArray moduleDefaults = new JsonArray();
+
     private DFESettings() {
         instance = this;
 
         defaultSettings.addProperty("version", DFE.getInstance().getModVersion().toString());
+        defaultSettings.add("modules",moduleDefaults);
 
         if (!settingsFile.exists()) {
             try {
@@ -50,6 +59,18 @@ public class DFESettings {
         if(!o.has("version")) {
             o.addProperty("version", DFE.getInstance().getModVersion().toString());
         }
+
+        if (!o.has("modules")) {
+            validateModules();
+        }
+
+    }
+
+    private void validateModule(String id) {
+
+    }
+
+    private void validateModules() {
 
     }
 
